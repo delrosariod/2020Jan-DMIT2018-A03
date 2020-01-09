@@ -11,7 +11,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ChinookSystem.Data.Entities
 {
-    {
     public class Album
     {
         private string _ReleaseLabel;
