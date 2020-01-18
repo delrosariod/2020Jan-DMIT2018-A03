@@ -4,6 +4,7 @@
     <blockquote class ="alert alert-info">
         This page will demonstrate the ListView control doing a complete CRUD using only ODS.
         The page will demonstrate the use of the user control MessageUserControl as it pertains to ODS.
+        CRUD Methods are added to the ODS using the several tabs/options available on the wizard.
     </blockquote>
     <asp:ListView ID="AlbumList" runat="server">
 
