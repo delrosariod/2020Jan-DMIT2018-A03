@@ -120,10 +120,10 @@ namespace ChinookSystem.BLL
             using (var context = new ChinookContext())
             {
                 var existing = context.Albums.Find(albumid);
-                if (existing == null)
-                {
-                    throw new Exception("Record already has been removed, no additional removal was executed.");
-                }
+                //if (existing == null)
+                //{
+                //    throw new Exception("Record already has been removed, no additional removal was executed.");
+                //}
                 context.Albums.Remove(existing);
                 return context.SaveChanges();
             }
