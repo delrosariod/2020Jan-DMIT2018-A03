@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="ListView ODS CRUD" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="ListViewODSCRUD.aspx.cs" Inherits="WebApp.SamplePages.ListViewODSCRUD" %>
+
+<%@ Register Src="~/UserControls/MessageUserControl.ascx" TagPrefix="uc1" TagName="MessageUserControl" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h1>ListView ODS CRUD</h1>
     <blockquote class ="alert alert-info">
@@ -6,6 +8,9 @@
         The page will demonstrate the use of the user control MessageUserControl as it pertains to ODS.
         CRUD Methods are added to the ODS using the several tabs/options available on the wizard.
     </blockquote>
+
+    <%-- Let user know their actions are working or not --%>
+    <uc1:MessageUserControl runat="server" ID="MessageUserControl" />
 
     <%-- For the Delete to work on this ODS CRUD, you **MUST** include a parameter called DataKeyNames 
          This parameter will be set to the PKey field Name on the Entity

@@ -9,6 +9,7 @@ using ChinookSystem.Data.Entities;
 using ChinookSystem.DAL;
 using System.ComponentModel;
 using DMIT2018Common.UserControls;
+using ChinookSystem.Data.POCOs;
 #endregion
 
 namespace ChinookSystem.BLL
@@ -60,6 +61,25 @@ namespace ChinookSystem.BLL
                               where albumrow.Title.Contains(albumtitle)
                               select albumrow;
                 return results.ToList();
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<AlbumArtists> Albums_ListAlbumsWithArtists(string albumtitle)
+        {
+            using (var context = new ChinookContext())
+            {
+                //query
+                //within the application, we are doing linq to entity not Linq to SQL therefore we must use context.
+                var queryResults = from x in context.Albums
+                                   orderby x.ReleaseYear descending, x.Title ascending //ascending is the default
+                                   select new AlbumArtists
+                                   {
+                                       AlbumTitle = x.Title,
+                                       Year = x.ReleaseYear,
+                                       ArtistName = x.Artist.Name
+                                   };
+                return queryResults.ToList();
             }
         }
         #endregion
