@@ -47,8 +47,10 @@
     </div>
     <div class="col-sm-10">
         <asp:Label ID="Label5" runat="server" Text="Tracks"></asp:Label>&nbsp;&nbsp;
-        <asp:Label ID="TracksBy" runat="server" ></asp:Label>&nbsp;&nbsp;
-        <asp:Label ID="SearchArg" runat="server" ></asp:Label><br />
+        <asp:Panel ID ="TrackSelectionListArgs" runat="server" Visible="false">
+            <asp:Label ID="TracksBy" runat="server" ></asp:Label>&nbsp;&nbsp;
+            <asp:Label ID="SearchArg" runat="server" ></asp:Label><br />
+        </asp:Panel>
         <asp:ListView ID="TracksSelectionList" runat="server"
             DataSourceID="TrackSelectionListODS"
             OnItemCommand="TracksSelectionList_ItemCommand"
@@ -184,7 +186,7 @@
                     <ItemTemplate >
                         <asp:CheckBox ID="Selected" runat="server" />
                         <asp:Label runat="server" ID="TrackId"
-                            Text='<%# Eval("TrackID") %>' Visible="true"></asp:Label>
+                            Text='<%# Eval("TrackID") %>' Visible="false"></asp:Label>
                         &nbsp;&nbsp;
                     </ItemTemplate>
                 </asp:TemplateField>

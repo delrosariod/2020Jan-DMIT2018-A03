@@ -22,7 +22,7 @@ namespace ChinookSystem.BLL
             using (var context = new ChinookContext())
             {
                 List<UserPlaylistTrack> results = (from x in context.PlaylistTracks
-                                                   where x.Playlist.Name.Contains(playlistname) && x.Playlist.UserName.Equals(username)
+                                                   where x.Playlist.Name.Equals(playlistname) && x.Playlist.UserName.Equals(username)
                                                    orderby x.TrackNumber
                                                    select new UserPlaylistTrack
                                                    {
@@ -40,7 +40,53 @@ namespace ChinookSystem.BLL
         {
             using (var context = new ChinookContext())
             {
-                //code to go here
+                //dtermine if playlist exists
+                //  do a query to find playlist
+                //test results = null
+                //if yes,
+                //create and instance of a playlist
+                //load
+                //add
+                //set tracknumber to 1
+                //no
+                //query to find max track number.
+                //tracknumber ++
+                //query to find track exists
+                //test results == null
+                //yes
+                //throw exception
+                //create an instance of playlisttrack.
+                //load
+                //add
+                //SaveChange
+
+                //what would happen if there is no match for the incoming parameter values?
+                //we need to ensure that the results have a valid value
+                //this value will be resolved by the query either as null
+                // (not found) or an IEnumerable collection.
+                //we are looking for a single occurence to match the where.
+                //to achieve a valid value we encapsulate the query in a 
+                //(query).FirstOrDefault();
+                int tracknumber = 0;
+
+                Playlist exists = (from x in context.Playlists
+                             where x.Name.Equals(playlistname) && x.UserName.Equals(username)
+                             select x).FirstOrDefault();
+
+                if (exists == null)
+                {
+                    //new playlist
+                    exists = new Playlist();
+                    exists.Name = playlistname;
+                    exists.UserName = username;
+                    context.Playlists.Add(exists);
+                    tracknumber = 1;
+                }
+                else
+                {
+                    //existing playlist
+                }
+
                 
              
             }
