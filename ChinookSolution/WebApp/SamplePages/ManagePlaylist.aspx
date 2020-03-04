@@ -184,7 +184,7 @@
                     <ItemTemplate >
                         <asp:CheckBox ID="Selected" runat="server" />
                         <asp:Label runat="server" ID="TrackId"
-                            Text='<%# Eval("TrackID") %>' Visible="false"></asp:Label>
+                            Text='<%# Eval("TrackID") %>' Visible="true"></asp:Label>
                         &nbsp;&nbsp;
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -197,7 +197,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Name">
                     <ItemTemplate>
-                        <asp:Label runat="server" ID="TrachName"
+                        <asp:Label runat="server" ID="TrackName"
                             Text='<%# Eval("TrackName") %>'></asp:Label>
                           &nbsp;&nbsp;
                     </ItemTemplate>

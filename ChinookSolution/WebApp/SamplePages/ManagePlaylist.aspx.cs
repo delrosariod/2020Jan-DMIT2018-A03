@@ -67,8 +67,25 @@ namespace WebApp.SamplePages
 
         protected void PlayListFetch_Click(object sender, EventArgs e)
         {
-            //code to go here
- 
+            if(string.IsNullOrEmpty(PlaylistName.Text))
+            {
+                MessageUserControl.ShowInfo("Data Missing", "Enter a playlist name");
+            }
+            else
+            {
+                string username = "HansenB"; //username will come from security once implemented.
+
+                //Message user control will be used to handle code behind user friendly error handling.
+                //Will NOT be using try catch. Try/catch is embedded within the MessageUserControl class.
+                MessageUserControl.TryRun(() => 
+                {
+                    //coding block
+                    PlaylistTracksController sysmgr = new PlaylistTracksController();
+                    List<UserPlaylistTrack> info = sysmgr.List_TracksForPlaylist(PlaylistName.Text, username);
+                    PlayList.DataSource = info;
+                    PlayList.DataBind();
+                },"Playlist","Manage your playlist"); //strings after the coding block are the messages for a successful input.
+            }
         }
 
         protected void MoveDown_Click(object sender, EventArgs e)
