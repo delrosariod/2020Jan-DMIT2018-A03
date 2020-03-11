@@ -211,7 +211,8 @@ namespace ChinookSystem.BLL
                             }
                         }
                         //update database
-                        //a field update NOT an entity update
+                        //a field update NOT an entity update --> does field by field because POCOS.
+                        //if you're doing CRUD (change a field or any number) --> do an entity update. Here we only have one field to change so we do one field instead
                         context.Entry(moveTrack).Property(y => y.TrackNumber).IsModified = true;
                         context.Entry(otherTrack).Property(y => y.TrackNumber).IsModified = true;
                         //commit transaction
